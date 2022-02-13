@@ -1,18 +1,19 @@
 import React from 'react'
-import { EmployeeItem } from './EmployeeItem'
-// import './EmployeesTable.css';
 import {useState} from 'react';
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
+import MenuItem from '@mui/material/MenuItem';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
+import { styled } from '@mui/material/styles';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
+import TextField from '@mui/material/TextField';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
@@ -24,18 +25,51 @@ import Switch from '@mui/material/Switch';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
+import {makeStyles} from '@material-ui/core';
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: '#00AAFF',
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    // backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+}));
+
+const useStyles = makeStyles({
+  field: {
+      marginTop: 20,
+      marginBottom: 20,
+      display:'block'
+  }
+})
 
 function descendingComparator(a, b, orderBy) {
+  console.log(b[orderBy] > a[orderBy]);
   if (b[orderBy] < a[orderBy]) {
     return -1;
   }
   if (b[orderBy] > a[orderBy]) {
     return 1;
   }
+  
   return 0;
+  
 }
 
 function getComparator(order, orderBy) {
+  console.log("order = ", order);
   return order === 'desc'
     ? (a, b) => descendingComparator(a, b, orderBy)
     : (a, b) => -descendingComparator(a, b, orderBy);
@@ -55,25 +89,25 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: 'uid',
+    id: 'employee_id',
     numeric: true,
     disablePadding: true,
     label: 'Employee ID',
   },
   {
-    id: 'name',
+    id: 'employee_name',
     numeric: false,
     disablePadding: true,
     label: 'Name',
   },
   {
-    id: 'email',
+    id: 'employee_email',
     numeric: false,
     disablePadding: true,
     label: 'Email ID',
   },
   {
-    id: 'role',
+    id: 'employee_role',
     numeric: false,
     disablePadding: true,
     label: 'Role',
@@ -85,14 +119,15 @@ const headCells = [
 function EnhancedTableHead(props) {
   const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } =
     props;
-  const createSortHandler = (property) => (event) => {
+  const createSortHandler = (property) => (event)=>{
     onRequestSort(event, property);
+    
   };
 
   return (
-    <TableHead>
-      <TableRow>
-        <TableCell padding="checkbox">
+    <TableHead >
+      <StyledTableRow>
+        <StyledTableCell padding="checkbox">
           <Checkbox
             color="primary"
             indeterminate={numSelected > 0 && numSelected < rowCount}
@@ -102,16 +137,17 @@ function EnhancedTableHead(props) {
               'aria-label': 'select all desserts',
             }}
           />
-        </TableCell>
+        </StyledTableCell>
         {headCells.map((headCell) => (
-          <TableCell
+          <StyledTableCell
             key={headCell.id}
             align={headCell.numeric ? 'left' : 'center'}
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
             
           >
-            <TableSortLabel
+            <TableSortLabel 
+              sx = {{ fontWeight: 'bold' }}
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : 'asc'}
               onClick={createSortHandler(headCell.id)}
@@ -120,12 +156,14 @@ function EnhancedTableHead(props) {
               {orderBy === headCell.id ? (
                 <Box component="span" sx={visuallyHidden}>
                   {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                 
                 </Box>
-              ) : null}
+              ) : null
+              }
             </TableSortLabel>
-          </TableCell>
+          </StyledTableCell>
         ))}
-      </TableRow>
+      </StyledTableRow>
     </TableHead>
   );
 }
@@ -196,10 +234,12 @@ EnhancedTableToolbar.propTypes = {
 
 export const EmployeesTable = (props) => {
 
-  const[changeRole, setChangeRole] = useState("");
+  const classes = useStyles()
+
+  const[changeRole, setChangeRole] = useState("Kaizen Committee");
 
   const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('name');
+  const [orderBy, setOrderBy] = React.useState('employeename');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
@@ -263,22 +303,28 @@ export const EmployeesTable = (props) => {
 
   const changeRoleOptionHandler = (event) => {
     setChangeRole(event.target.value);
+    console.log(event.target.label);
   };
 
   const roles = [
-    "Kaizen Committee",
-    "Platform Admin",
-    "Platform User",
+    {
+      id: "committee",
+      label: "Kaizen Committee"
+    },
+    {
+      id: "admin",
+      label: "Platform Admin"
+    },
+    {
+      id: "user",
+      label: "Platform User"
+    }
   ];
 
   
   
   return (
-    <div className = "container">
-        {/* <div style={{display: 'flex',  justifyContent:'left', alignItems:'center'}}>
-            <h1> Employees List </h1>
-        </div> */}
-
+    
         <Box sx={{ width: '100%' }}>
           <Paper sx={{ width: '100%', mb: 2 }}>
             <EnhancedTableToolbar numSelected={selected.length} />
@@ -295,10 +341,12 @@ export const EmployeesTable = (props) => {
                   onSelectAllClick={handleSelectAllClick}
                   onRequestSort={handleRequestSort}
                   rowCount={props.employees.length}
+                  
                 />
                 <TableBody>
                   {/* if you don't need to support IE11, you can replace the `stableSort` call with:
                     rows.slice().sort(getComparator(order, orderBy)) */}
+                  {/*records after sorting*/}
                   {stableSort(props.employees, getComparator(order, orderBy))
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map((employees, index) => {
@@ -307,7 +355,7 @@ export const EmployeesTable = (props) => {
                       const labelId = `enhanced-table-checkbox-${index}`;
 
                       return (
-                        <TableRow
+                        <StyledTableRow
                           hover
                           onClick={(event) => handleClick(event, employees.employee_name)}
                           role="checkbox"
@@ -316,7 +364,7 @@ export const EmployeesTable = (props) => {
                           key={employees.employee_name}
                           selected={isItemSelected}
                         >
-                          <TableCell padding="checkbox">
+                          <StyledTableCell padding="checkbox">
                             <Checkbox
                               color="primary"
                               checked={isItemSelected}
@@ -324,39 +372,68 @@ export const EmployeesTable = (props) => {
                                 'aria-labelledby': labelId,
                               }}
                             />
-                          </TableCell>
-                          <TableCell
+                          </StyledTableCell>
+                          <StyledTableCell
                             component="th"
                             id={labelId}
                             scope="row"
                             padding="none"
                           >
                             {employees.employee_id}
-                          </TableCell>
-                          <TableCell align="center">{employees.employee_name}</TableCell>
-                          <TableCell align="center">{employees.employee_email}</TableCell>
-                          <TableCell align="center"><form>
-                              <div>
-                                <select onChange={changeRoleOptionHandler}>
+                          </StyledTableCell>
+                          <StyledTableCell align="center">{employees.employee_name}</StyledTableCell>
+                          <StyledTableCell align="center">{employees.employee_email}</StyledTableCell>
+                          <StyledTableCell align="center">
+                            <form>
+                              <div className=''>
+                                <select onChange={changeRoleOptionHandler} >
                                   <option>{employees.employee_role}</option>
                                   <option>Kaizen Committee</option>
                                   <option>Platform Admin</option>
                                   <option>Platform User</option>
                                 </select>
                               </div>
-                            </form></TableCell>
+                            </form>
+                            {/* <Box
+                              component="form"
+                              sx={{
+                                '& .MuiTextField-root': { m: 1, width: '25ch' },
+                              }}
+                              noValidate
+                              autoComplete="off"
+                            >
+                              <div>
+                              <TextField
+                                  id="standard-select-currency"
+                                  select
+                                  label="Select"
+                                  value={changeRole}
+                                  onChange={changeRoleOptionHandler}
+                                  helperText="Please select your currency"
+                                  variant="standard"
+                                >
+                                  {roles.map((option) => (
+                                    <MenuItem key={option.id} value={option.label}>
+                                      {option.label}
+                                    </MenuItem>
+                                  ))}
+                                </TextField>
+                              </div>  
+                            </Box> */}
+                            
+                          </StyledTableCell>
                           
-                        </TableRow>
+                        </StyledTableRow>
                       );
                     })}
                   {emptyRows > 0 && (
-                    <TableRow
+                    <StyledTableRow
                       style={{
                         height: (dense ? 33 : 53) * emptyRows,
                       }}
                     >
-                      <TableCell colSpan={6} />
-                    </TableRow>
+                      <StyledTableCell colSpan={6} />
+                    </StyledTableRow>
                   )}
                 </TableBody>
               </Table>
@@ -376,48 +453,6 @@ export const EmployeesTable = (props) => {
             label="Dense padding"
           />
         </Box>
-
-       
-        {/* <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Employee ID</TableCell>
-                <TableCell align="right">Employee Name</TableCell>
-                <TableCell align="right">Employee Email</TableCell>
-                <TableCell align="right">Employee Role</TableCell>
-                
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {props.employees.map((employees) => (
-                <TableRow
-                  key={employees.employee_id}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row">
-                    {employees.employee_id}
-                  </TableCell>
-                  <TableCell align="right">{employees.employee_name}</TableCell>
-                  <TableCell align="right">{employees.employee_email}</TableCell>
-                  <TableCell align="right"><form>
-                          <div>
-                            <select onChange={changeRoleOptionHandler}>
-                              <option>{employees.employee_role}</option>
-                              <option>Kaizen Committee</option>
-                              <option>Platform Admin</option>
-                              <option>Platform User</option>
-                            </select>
-                          </div>
-                        </form></TableCell>
-                  
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer> */}
-
-        
-    </div>
-  )
+    
+  );
 }
