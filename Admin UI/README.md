@@ -1,3 +1,12 @@
+# Progress
+
+* Using Material UI
+* Employees List working, need to improve the toggle roles feature
+* Ideas Cards added, need to be color coordinated according to their category, and the need to make the "Learn more" button work
+* All the pages are linked
+* Home page is empty
+* Used Json server to add the ideas, used an array of objects to add the employees in the employees list
+
 # React-Bootstrap
 
 `npm install react-bootstrap bootstrap@5.1.3`
