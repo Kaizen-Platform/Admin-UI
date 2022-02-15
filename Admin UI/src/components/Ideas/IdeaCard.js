@@ -7,55 +7,43 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@mui/material/Button';
 import { makeStyles } from '@mui/styles';
 import { Avatar } from '@mui/material';
-import { blue, green, pink, red, yellow } from '@mui/material/colors';
+import { blue, green, pink, red, yellow, purple,  } from '@mui/material/colors';
 import { styled, alpha } from '@mui/material/styles';
 
-// const useStyles = makeStyles({
-//     avatar: {
-//         // border: (idea) => {
-//         //     if(idea.category == 'work'){
-//         //         return '1px solid red'
-//         //     }
-//         // }
-//         backgroundColor: (idea) => {
-//             if(idea.category == 'Tool'){
-//                 return "#00AAFF"
-//             }
-//             if(idea.category == "Technical Framework"){
-//                 return green[200]
-//             }
-//             if(idea.category == "Process Framework"){
-//                 return pink[200]
-//             }
-//             return red[200]
-//         }
-//     },
-// })
 
-const CardStyled = styled('div')({
-    position: 'relative',
-    // backgroundColor: "#00AAFF"
-    backgroundColor: (idea) => {
-        if(idea.category == 'Tool'){
-            return "#00AAFF"
-        }
-        if(idea.category == "Technical Framework"){
-            return green[200]
-        }
-        if(idea.category == "Process Framework"){
-            return pink[200]
-        }
-        return red[200]
-    }
-    
-  });
+
 
 export default function IdeaCard({ idea }) {
-    // const classes = useStyles(idea)
+    const getBackground = () => {
+        if(idea.category === 'Tool'){
+            return yellow[200]
+        }
+        if(idea.category === "Technical Framework"){
+            return green[200]
+        }
+        if(idea.category === "Process Framework"){
+            return pink[200]
+        }
+        if(idea.category === "Product"){
+            return blue[200]
+        }
+        if(idea.category === "App"){
+            return "#1de9b6"
+        }
+        if(idea.category === "Web Portal"){
+            return "#76ff03"
+        }
+        if(idea.category === "Template"){
+            return purple[200]
+        }
+
+
+
+        return "#1de9b6"
+}
   return (
     <div>
-        <CardStyled>
-            <Card elevation={1}>
+            <Card elevation={1} style = {{backgroundColor: getBackground()}}>
                 <CardHeader
                 avatar = {
                     <Avatar >
@@ -72,10 +60,9 @@ export default function IdeaCard({ idea }) {
                 </CardContent>
                 <CardActions>
 
-                    <Button size="small">Learn More</Button>
+                    <Button size="small" >Learn More</Button>
                 </CardActions>
             </Card>
-        </CardStyled>
       
     </div>
   )

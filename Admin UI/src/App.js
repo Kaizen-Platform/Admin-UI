@@ -89,6 +89,7 @@ function App() {
           <Routes>
             <Route exact path="/employeeslist" element = {<EmployeesTable employees = {employees}/>}></Route>
             <Route exact path="/ideaslist" element = {<IdeasList/>}></Route>
+            
           </Routes>
         </Layout>
       </Router>
