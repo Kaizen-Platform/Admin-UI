@@ -2,6 +2,8 @@ import React,{useEffect, useState} from 'react'
 import {makeStyles, Container} from '@material-ui/core';
 import Masonry from 'react-masonry-css'
 import IdeaCard from './IdeaCard';
+import { useSelector } from 'react-redux'
+
 
 const useStyles = makeStyles({
     // btn: {
@@ -23,14 +25,26 @@ const useStyles = makeStyles({
 })
 
 export default function IdeasList() {
-
+  const ideas = useSelector((state) => state.ideas);
+  console.log(ideas);
   const classes = useStyles()
-  const [ideas, setIdeas] = useState([])
+  const [ideaData, setIdeaData] = useState([])
+//   const [ideaData, setIdeaData] = useState({
+//       uid:'',
+//       title:'',
+//       summary:'',
+//       description:'',
+//       category:'',
+//       status:'',
+//       remarks:'',
+//       owner:'',
+//       selectedFile:'',
+//   });
   
   useEffect(() => {
     fetch( "http://localhost:8000/ideas")
         .then(response => response.json())
-        .then(data => setIdeas(data))
+        .then(data => setIdeaData(data))
   
   }, [])
   
@@ -46,7 +60,7 @@ export default function IdeasList() {
             breakpointCols={breakpoints}
             className="my-masonry-grid"
             columnClassName="my-masonry-grid_column">
-            {ideas.map(idea => (
+            {ideaData.map(idea => (
                 <div key={idea.id}>
                     <IdeaCard idea={idea}/>
                 </div>

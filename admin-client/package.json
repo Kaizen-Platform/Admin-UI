@@ -2,6 +2,7 @@
   "name": "kaizen-platform",
   "version": "0.1.0",
   "private": true,
+  
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
@@ -25,12 +26,14 @@
     "react-file-base64": "^1.0.3",
     "react-icons": "^4.3.1",
     "react-masonry-css": "^1.0.16",
+    "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
     "styled-components": "^5.3.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "http-proxy-middleware": "^2.0.3"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -2,11 +2,14 @@ import './App.css';
 import {EmployeesTable} from './components/Employees/EmployeesTable';
 import { Footer } from './components/Footer/Footer';
 import IdeasList from './components/Ideas/IdeasList';
-import {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import {createTheme, ThemeProvider} from '@material-ui/core'
 import { purple } from '@mui/material/colors';
 import Layout from './components/Layout';
+import {useDispatch} from 'react-redux';
+import { getPosts } from './actions/ideas';
+
 
 const theme = createTheme({
   palette:{
@@ -36,6 +39,11 @@ function App() {
   //   //   return e!==employee;
   //   // }));
   // }
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPosts());
+  }, [dispatch]);
 
   const [employees, setEmployees] = useState([
     {
