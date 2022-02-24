@@ -2,6 +2,7 @@ import './App.css';
 import {EmployeesTable} from './components/Employees/EmployeesTable';
 import { Footer } from './components/Footer/Footer';
 import IdeasList from './components/Ideas/IdeasList';
+import MyIdeas from './components/Ideas/MyIdeas';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import {createTheme, ThemeProvider} from '@material-ui/core'
@@ -16,7 +17,9 @@ const theme = createTheme({
     primary:{
       main:'#fefefe'
     },
-    secondary:purple   
+    secondary:{
+      main:'#000000'
+    },
   },
   typography:{
     fontFamily: 'QuickSand',
@@ -95,9 +98,9 @@ function App() {
       <Router>
         <Layout>
           <Routes>
-            <Route exact path="/employeeslist" element = {<EmployeesTable employees = {employees}/>}></Route>
-            <Route exact path="/ideaslist" element = {<IdeasList/>}></Route>
-            
+            <Route exact path="/employeesList" element = {<EmployeesTable employees = {employees}/>}></Route>
+            <Route exact path="/ideasList" element = {<IdeasList/>}></Route>
+            <Route exact path="/myIdeas" element = {<MyIdeas/>}></Route>
           </Routes>
         </Layout>
       </Router>

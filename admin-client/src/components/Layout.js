@@ -26,6 +26,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
 import { Avatar } from '@mui/material';
+import LoyaltySharpIcon from '@material-ui/icons/LoyaltySharp';
 
 const drawerWidth = 240
 
@@ -113,21 +114,22 @@ export default function Layout({children}) {
   const navigate = useNavigate()
   const location = useLocation()
   const menuItem = [
-    {
-      text: "Home",
-      icon: <HomeIcon style={{fill: "black"}}/>,
-      path: '/'
-    },
+    
     {
       text: "Employees",
       icon: <BadgeSharpIcon style={{fill: "black"}}/>,
-      path: '/employeeslist'
+      path: '/employeesList'
     },
     {
       text: "Ideas",
       icon: <EmojiObjectsTwoToneIcon style={{fill: "black"}}/>,
-      path: '/ideaslist'
+      path: '/ideasList'
     },
+    {
+      text: "My Ideas",
+      icon: <LoyaltySharpIcon style={{fill: "black"}}/>,
+      path: '/myIdeas'
+    }
   ]
 
   const [anchorEl, setAnchorEl] = React.useState(null);

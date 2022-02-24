@@ -1,71 +1,125 @@
 {
     "ideas": [
       {
-        "title": "Yoshi's birthday bash",
-        "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-        "category": "Tool",
-        "id": 1
+        "uid":"ZOHO1",
+        "title":"Yoshi's birthday bash",
+        "summary":"Lorem Ipsum is simply dummy text of the printing",
+        "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "category":"Tool",
+        "status":"Review",
+        "remarks":"good",
+        "owner":"nandini",
+        "selectedFile":""
       },
       {
-        "title": "Complete my ninja training",
-        "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.",
+        "uid":"ZOHO2",
+        "title":"Complete my ninja training",
+        "summary":"Lorem Ipsum is simply dummy text of the printing",
+        "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.",
         "category": "Technical Framework",
-        "id": 2
+        "status":"Review",
+        "remarks":"good",
+        "owner":"nandini",
+        "selectedFile":""
       },
       {
-        "title": "Order a pizza!",
-        "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "uid":"ZOHO3",
+        "title":"Complete my ninja training",
+        "summary":"Lorem Ipsum is simply dummy text of the printing",
+        "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         "category": "Process Framework",
-        "id": 3
+        "status":"Select for Development",
+        "remarks":"good",
+        "owner":"nandini",
+        "selectedFile":""
       },
       {
-        "title": "Yoshi's birthday bash",
-        "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "uid":"ZOHO4",
+        "title":"Order a pizza!",
+        "summary":"Lorem Ipsum is simply dummy text of the printing",
+        "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         "category": "Product",
-        "id": 4
+        "status":"Under Development",
+        "remarks":"good",
+        "owner":"nandini",
+        "selectedFile":""
       },
       {
-        "title": "Complete my ninja training",
-        "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.",
+        "uid":"ZOHO5",
+        "title":"Order a pizza!",
+        "summary":"Lorem Ipsum is simply dummy text of the printing",
+        "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         "category": "App",
-        "id": 5
+        "status":"Under Production",
+        "remarks":"good",
+        "owner":"nandini",
+        "selectedFile":""
       },
       {
-        "title": "Order a pizza!",
-        "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "uid":"ZOHO6",
+        "title":"Order a pizza!",
+        "summary":"Lorem Ipsum is simply dummy text of the printing",
+        "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         "category": "Web Portal",
-        "id": 6
+        "status":"Under Production",
+        "remarks":"good",
+        "owner":"nandini",
+        "selectedFile":""
       },
       {
-        "title": "Order a pizza!",
-        "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "uid":"ZOHO7",
+        "title":"Order a pizza!",
+        "summary":"Lorem Ipsum is simply dummy text of the printing",
+        "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         "category": "Template",
-        "id": 7
+        "status":"Under Production",
+        "remarks":"good",
+        "owner":"nandini",
+        "selectedFile":""
       },
       {
-        "title": "Yoshi's birthday bash",
-        "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "uid":"ZOHO8",
+        "title":"Order a pizza!",
+        "summary":"Lorem Ipsum is simply dummy text of the printing",
+        "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         "category": "Product",
-        "id": 8
+        "status":"Under Development",
+        "remarks":"good",
+        "owner":"nandini",
+        "selectedFile":""
       },
       {
-        "title": "Complete my ninja training",
-        "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.",
+        "uid":"ZOHO9",
+        "title":"Order a pizza!",
+        "summary":"Lorem Ipsum is simply dummy text of the printing",
+        "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         "category": "App",
-        "id": 9
+        "status":"Under Production",
+        "remarks":"good",
+        "owner":"nandini",
+        "selectedFile":""
       },
       {
-        "title": "Order a pizza!",
-        "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "uid":"ZOHO10",
+        "title":"Order a pizza!",
+        "summary":"Lorem Ipsum is simply dummy text of the printing",
+        "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         "category": "Web Portal",
-        "id": 10
+        "status":"Under Production",
+        "remarks":"good",
+        "owner":"nandini",
+        "selectedFile":""
       },
       {
-        "title": "Order a pizza!",
-        "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "uid":"ZOHO11",
+        "title":"Order a pizza!",
+        "summary":"Lorem Ipsum is simply dummy text of the printing",
+        "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         "category": "Template",
-        "id": 11
+        "status":"Under Production",
+        "remarks":"good",
+        "owner":"nandini",
+        "selectedFile":""
       }
-
     ]
   }

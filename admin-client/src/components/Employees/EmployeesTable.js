@@ -3,7 +3,8 @@ import {useState} from 'react';
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import NativeSelect from '@material-ui/core/NativeSelect';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import { styled } from '@mui/material/styles';
@@ -384,7 +385,7 @@ export const EmployeesTable = (props) => {
                           <StyledTableCell align="center">{employees.employee_name}</StyledTableCell>
                           <StyledTableCell align="center">{employees.employee_email}</StyledTableCell>
                           <StyledTableCell align="center">
-                            <form>
+                            {/* <form>
                               <div className=''>
                                 <select onChange={changeRoleOptionHandler} >
                                   <option>{employees.employee_role}</option>
@@ -393,34 +394,22 @@ export const EmployeesTable = (props) => {
                                   <option>Platform User</option>
                                 </select>
                               </div>
-                            </form>
-                            {/* <Box
-                              component="form"
-                              sx={{
-                                '& .MuiTextField-root': { m: 1, width: '25ch' },
-                              }}
-                              noValidate
-                              autoComplete="off"
-                            >
-                              <div>
-                              <TextField
-                                  id="standard-select-currency"
-                                  select
-                                  label="Select"
-                                  value={changeRole}
-                                  onChange={changeRoleOptionHandler}
-                                  helperText="Please select your currency"
-                                  variant="standard"
-                                >
-                                  {roles.map((option) => (
-                                    <MenuItem key={option.id} value={option.label}>
-                                      {option.label}
-                                    </MenuItem>
-                                  ))}
-                                </TextField>
-                              </div>  
-                            </Box> */}
-                            
+                            </form> */}
+                            <FormControl >
+                              
+                              <NativeSelect
+                                defaultValue={employees.employee_role}
+                                inputProps={{
+                                  name: 'age',
+                                  id: 'uncontrolled-native',
+                                }}
+                              >{roles.map((r) => (
+                                <option key = {r.id} value={r}>{r.label}</option>
+                              ))}
+                                
+                                
+                              </NativeSelect>
+                            </FormControl>
                           </StyledTableCell>
                           
                         </StyledTableRow>
