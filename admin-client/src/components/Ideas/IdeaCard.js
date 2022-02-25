@@ -14,12 +14,12 @@ import Drawer from '@mui/material/Drawer';
 import IdeaDetails from './IdeaDetails';
 
 
-const drawerWidth = 240;
+// const drawerWidth = 240;
 
   const useStyles = makeStyles((theme) => {
     return {
       
-      drawerPaper:{
+      drawerPaperIdeaDetail:{
         width:"84%"
       },
     }
@@ -70,13 +70,13 @@ export default function IdeaCard({ idea }) {
         <div>
                 <Card elevation={1} style = {{backgroundColor: getBackground()}}>
                     <CardHeader
-                    avatar = {
-                        <Avatar >
-                            {idea.category[0].toUpperCase()}
-                        </Avatar>
-                    }
-                    title={idea.title}
-                    subheader={idea.category}
+                        avatar = {
+                            <Avatar >
+                                {idea.category[0].toUpperCase()}
+                            </Avatar>
+                        }
+                        title={idea.title}
+                        subheader={idea.category}
                     />
                     <CardContent>
                     <Typography variant="body2" color="textSecondary">
@@ -84,26 +84,18 @@ export default function IdeaCard({ idea }) {
                     </Typography>
                     </CardContent>
                     <CardActions>
-                    
-                        <Button onClick={handleDrawerOpen}>Learn more</Button>
+                        <Button onClick={handleDrawerOpen} >Learn more</Button>
                         <Drawer
                             variant="persistent"
                             anchor="right"
                             open={open}
-                            classes={{paper: classes.drawerPaper}}
+                            classes={{paper: classes.drawerPaperIdeaDetail}}
                             style = {{backgroundColor: getBackground()}}
                         >
                             <IdeaDetails idea = {idea} setOpen={setOpen}/>
-                            
-                            
-                            
-                           
                         </Drawer>
-                    
-                    
                     </CardActions>
                 </Card>
-        
         </div>
     )
 }

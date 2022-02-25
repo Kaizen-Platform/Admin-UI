@@ -10,6 +10,19 @@ import { styled, alpha, useTheme } from '@mui/material/styles';
 import Typography from '@material-ui/core/Typography';
 import { Avatar, Fab } from '@mui/material';
 import { Grid,Item } from '@mui/material';
+import useStyles from './styles';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import moment from 'moment';
+import { useEffect, useState } from 'react';
+import EditIdea from './Edit/EditIdea';
+import { Link, useParams } from 'react-router-dom';
+// import { Link } from '@material-ui/core';
+import Button from '@mui/material/Button';
+import axios from 'axios';
 
 const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -23,6 +36,10 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function IdeaDetails({idea, setOpen}) {
 
     const theme = useTheme();
+    const classes = useStyles();
+    const [currentId, setCurrentId] = useState(null);
+    
+    
 
     const getBackground = () => {
         if(idea.category === 'Tool'){
@@ -51,6 +68,7 @@ export default function IdeaDetails({idea, setOpen}) {
     const handleDrawerClose = () => {
         setOpen(false);
       };
+      
     return (
         <div>
             <DrawerHeader style = {{backgroundColor: getBackground()}}>
@@ -61,50 +79,80 @@ export default function IdeaDetails({idea, setOpen}) {
             </DrawerHeader>
             <Divider />
 
-            <Grid container spacing={3} justifyContent="space-around">
-                <Grid item xs={8} >
-                    <Typography padding={10} variant="h4" color="secondary" align = "left">
-                        Owner: {idea.owner}
-                    </Typography>
+            <Grid container spacing={3}className = {classes.details}>
+                <Grid item xs={4} >
+                  
+                    <Box className = {classes.owner} sx={{ display: 'flex'}}>
+                        <Avatar sx={{ width: 56, height: 56, bgcolor: blue[500] }}>
+                            {idea.owner[0].toUpperCase()}
+                        </Avatar>
+                        <Typography className = {classes.owner} variant="h6" color="secondary" align = "left">
+                            {idea.owner}
+                        </Typography>
+                    </Box>
                 </Grid>
-                <Grid item xs={2}>
+                <Grid item xs={2} className = {classes.chips}>
+                    <Typography variant="body1" color="secondary" align = "left">
+                        Category   
+                    </Typography>
                     <Chip  label={idea.category} style = {{backgroundColor: getBackground()}}/>
                 </Grid>
-                <Grid item xs={2}> 
+                <Grid item xs={2} className = {classes.chips}> 
+                    <Typography variant="body1" color="secondary" align = "left">
+                        Status   
+                    </Typography>
                     <Chip  label={idea.status} color="primary"/>
                 </Grid>
-                <Grid item xs={10}>
-                    <Typography variant="body1" color="secondary" align = "left">
-                        Summary: {idea.summary} 
-                        
+                <Grid item xs={2}> 
+                    <Typography variant="h6" color="secondary" align = "left">
+                        {moment(idea.createdAt).fromNow()}   
                     </Typography>
                 </Grid>
-                <Grid item xs={2}>
-                    <Fab color="secondary" aria-label="edit" size="small" align="right">
-                        <EditIcon />
+                <Grid item xs={2}> 
+                    <Fab color="primary" aria-label="edit" size="small" align="right">
+                        {/* <EditIcon onClick={() => setCurrentId(idea._id)}/>
+                        {currentId? <EditIdea currentId={currentId} />:null} */}
+                        <Button LinkComponent={Link} to={`/editIdea/${idea._id}`} onClick={() => setCurrentId(idea._id)}>
+                            <EditIcon style={{ color: "white" }}/>
+                        </Button>
+                        {/* <Link to = '/editIdea' cla ssName='btn-btn-primary'>edit</Link> */}
                     </Fab>
+                </Grid>
+
+                
+                <Grid className={classes.keys} item xs={2}>
+                    <Typography variant="body1" color="secondary" align = "center">
+                        Summary
+                    </Typography>
                 </Grid>
                 <Grid item xs={10}>
                     <Typography variant="body1" color="secondary" align = "left">
-                        Description: {idea.description} 
-                        
+                        {idea.summary} 
                     </Typography>
                 </Grid>
-                <Grid item xs={2}>
-                    <Fab color="secondary" aria-label="edit" size="small" align="right">
-                        <EditIcon />
-                    </Fab>
+                
+
+                <Grid className={classes.keys} item xs={2}>
+                    <Typography variant="body1" color="secondary" align = "center">
+                        Description
+                    </Typography>
                 </Grid>
                 <Grid item xs={10}>
                     <Typography variant="body1" color="secondary" align = "left">
-                        Remarks: {idea.remarks}
-                        
+                        {idea.description} 
                     </Typography>
                 </Grid>
-                <Grid item xs={2}>
-                    <Fab color="secondary" aria-label="edit" size="small" align="right">
-                        <EditIcon />
-                    </Fab>
+
+
+                <Grid className={classes.keys} item xs={2}>
+                    <Typography variant="body1" color="secondary" align = "center">
+                        Remarks
+                    </Typography>
+                </Grid>
+                <Grid item xs={10}>
+                    <Typography variant="body1" color="secondary" align = "left">
+                        {idea.remarks} 
+                    </Typography>
                 </Grid>
 
             </Grid>

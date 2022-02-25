@@ -25,12 +25,12 @@ const useStyles = makeStyles({
     }
 })
 
-export default function IdeasList() {
+export default function IdeasList({ideaData}) {
   const ideas = useSelector((state) => state.ideas);
   console.log(ideas);
   const classes = useStyles()
   const dispatch = useDispatch();
-  const [ideaData, setIdeaData] = useState([])
+  
 //   const [ideaData, setIdeaData] = useState({
 //       uid:'',
 //       title:'',
@@ -43,12 +43,7 @@ export default function IdeasList() {
 //       selectedFile:'',
 //   });
   
-  useEffect(() => {
-    fetch( "http://localhost:5000/ideas")
-        .then(response => response.json())
-        .then(data => setIdeaData(data))
-    
-  }, [])
+  
    
 
   

@@ -86,10 +86,13 @@ const useStyles = makeStyles((theme) => {
       padding: theme.spacing(3)
     },
     drawer:{
-      width: drawerWidth
+      width: drawerWidth,
+      backgroundColor: "#00AAFF"
+      
     },
     drawerPaper:{
-      width:drawerWidth
+      width:drawerWidth,
+      backgroundColor: "#00AAFF"
     },
     root:{
       display: "flex"
@@ -223,9 +226,11 @@ export default function Layout({children}) {
           color="inherit"
         >
           <AccountCircle />
+          
         </IconButton>
         <p>Profile</p>
       </MenuItem>
+      <MenuItem>ABC </MenuItem>
     </Menu>
   );
   

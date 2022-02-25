@@ -10,12 +10,13 @@ import { purple } from '@mui/material/colors';
 import Layout from './components/Layout';
 import {useDispatch} from 'react-redux';
 import { getPosts } from './actions/ideas';
-
+import EditIdea from './components/Ideas/Edit/EditIdea';
+import IdeaDetails from './components/Ideas/IdeaDetails';
 
 const theme = createTheme({
   palette:{
     primary:{
-      main:'#fefefe'
+      main:'#FEFEFE'
     },
     secondary:{
       main:'#000000'
@@ -32,22 +33,7 @@ const theme = createTheme({
 
 function App() {
 
-  // const onEdit = (employee_id, newRole) =>{
-  //   let newEditItem = employees.find((elem) =>{
-  //     return elem.employee_id === employee_id;
-  //   })
-  //   console.log(newEditItem, newRole);
-  //   //for deleting
-  //   // setEmployees(employees.filter((e)=>{
-  //   //   return e!==employee;
-  //   // }));
-  // }
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getPosts());
-  }, [dispatch]);
-
+  const [ideaData, setIdeaData] = useState([])
   const [employees, setEmployees] = useState([
     {
       employee_id: "ZOHO1",
@@ -87,20 +73,22 @@ function App() {
     }
 
   ]);
+
+  useEffect(() => {
+    fetch( "http://localhost:5000/ideas")
+        .then(response => response.json())
+        .then(data => setIdeaData(data))
+    
+  }, [])
   return (
-    // <div className='App'>
-      
-    //   {/* <EmployeesTable employees = {employees}/> */}
-    //   <IdeaItem/>
-    //   <Footer/>
-    // </div>
     <ThemeProvider theme = {theme}>
       <Router>
         <Layout>
           <Routes>
             <Route exact path="/employeesList" element = {<EmployeesTable employees = {employees}/>}></Route>
-            <Route exact path="/ideasList" element = {<IdeasList/>}></Route>
-            <Route exact path="/myIdeas" element = {<MyIdeas/>}></Route>
+            <Route exact path="/ideasList" element = {<IdeasList ideaData = {ideaData} />}></Route>
+            <Route exact path="/myIdeas" element = {<MyIdeas ideaData = {ideaData}/>}></Route>
+            <Route exact path="/editIdea/:id" element = {<EditIdea/>} exact></Route>
           </Routes>
         </Layout>
       </Router>
